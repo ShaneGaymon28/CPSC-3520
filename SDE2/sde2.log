@@ -1,0 +1,41 @@
+Shane Gaymon
+CPSC 3520-001
+Software Development Experience 2
+Prof. Ligon
+Spring 2022
+
+Sample Use:
+
+1. first_duplicate
+
+# first_duplicate [1;2;3;4;5;6;7;4;5;2;9];;
+- : int = 2
+
+# first_duplicate [1;2;3;4;5;6;7;8;9;10];;
+- : int = -10000
+
+
+2. first_nonrepeating
+
+# first_nonrepeating [1;2;9;3;2;7;5;6;1;3];; 
+- : int = 9
+
+# first_nonrepeating [1;2;3;4;5;1;2;3;4;5];;
+- : int = -10000
+
+
+3. sumOfTwo
+
+# sumOfTwo([1;2;3],[10;20;30;40],32);;
+- : bool = true
+
+# sumOfTwo([1;2;3],[10;20;30;40],40);;
+- : bool = false
+
+4. cyk_sublists
+
+# cyk_sublists 8;;
+- : (int * int) list = [(1, 7); (2, 6); (3, 5); (4, 4); (5, 3); (6, 2); (7, 1)]
+
+# cyk_sublists(6);;
+- : (int * int) list = [(1, 5); (2, 4); (3, 3); (4, 2); (5, 1)]
