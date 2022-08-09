@@ -1,0 +1,226 @@
+[1mtrue.[0m
+
+[1]  ?- consult('sde1-p5.pro').
+
+
+[1mtrue.[0m
+
+[1]  ?- listing(bedplan).
+
+
+bedplan(F1, F2, F3, F4, F5, F6) :-
+    flower(F1, S1, dry, C1),
+    flower(F2, S2, W2, C2),
+    flower(F3, S3, wet, C3),
+    flower(F4, S4, wet, C4),
+    flower(F5, S5, W5, C5),
+    flower(F6, S6, dry, C6),
+    noDuplicates(F1, F2, F3, F4, F5, F6),
+    correctColor(C1, C2, C3, C4, C5, C6),
+    allowedSize(S1, S2, S3, S4, S5, S6),
+    display_bed(1, F1, S1, dry, C1),
+    display_bed(2, F2, S2, W2, C2),
+    display_bed(3, F3, S3, wet, C3),
+    display_bed(4, F4, S4, wet, C4),
+    display_bed(5, F5, S5, W5, C5),
+    display_bed(6, F6, S6, dry, C6),
+    nl.
+
+[1mtrue.[0m
+
+[1]  ?- listing(display_bed).
+
+
+display_bed(Bed, Flower, Size, WetOrDry, Color) :-
+    write('Bed #'),
+    write(Bed),
+    write(': \t'),
+    write(Flower),
+    write(' \t'),
+    write(Size),
+    write(' \t'),
+    write(WetOrDry),
+    write(' \t'),
+    write(Color),
+    nl,
+    nl.
+
+[1mtrue.[0m
+
+[1]  ?- listing(noDuplicates).
+
+
+noDuplicates(F1, F2, F3, F4, F5, F6) :-
+    isSameName(F1, F2),
+    isSameName(F1, F3),
+    isSameName(F1, F4),
+    isSameName(F1, F5),
+    isSameName(F1, F6),
+    isSameName(F2, F3),
+    isSameName(F2, F4),
+    isSameName(F2, F5),
+    isSameName(F2, F6),
+    isSameName(F3, F4),
+    isSameName(F3, F5),
+    isSameName(F3, F6),
+    isSameName(F4, F5),
+    isSameName(F4, F6),
+    isSameName(F5, F6).
+
+[1mtrue.[0m
+
+[1]  ?- listing(allowedSize).
+
+
+allowedSize(S1, S2, S3, S4, S5, S6) :-
+    allowed(S1, S2),
+    allowed(S2, S3),
+    allowed(S3, S4),
+    allowed(S4, S5),
+    allowed(S5, S6).
+
+[1mtrue.[0m
+
+[1]  ?- listing(allowed).
+
+
+allowed(X, X).
+allowed(short, med).
+allowed(med, tall).
+allowed(med, short).
+allowed(tall, med).
+
+[1mtrue.[0m
+
+[1]  ?- listing(isSameName).
+
+
+isSameName(D1, D2) :-
+    not(D1=D2).
+
+[1mtrue.[0m
+
+[1]  ?- listing(correctColor).
+
+
+correctColor(C1, C2, C3, C4, C5, C6) :-
+    not(C1=C2),
+    not(C2=C3),
+    not(C3=C4),
+    not(C4=C5),
+    not(C5=C6).
+
+[1mtrue.[0m
+
+[1]  ?- listing(wetBed).
+
+
+wetBed(1, dry).
+wetBed(3, wet).
+wetBed(4, wet).
+wetBed(6, dry).
+
+[1mtrue.[0m
+
+[1]  ?- bedplan(F1,F2,F3,F4,F5,F6).
+
+
+Bed #1: 	roses 	med 	dry 	red
+
+Bed #2: 	daisies 	med 	wet 	yellow
+
+Bed #3: 	petunias 	med 	wet 	pink
+
+Bed #4: 	daffodils 	med 	wet 	yellow
+
+Bed #5: 	begonias 	tall 	wet 	white
+
+Bed #6: 	snapdragons 	tall 	dry 	red
+
+
+F1 = roses,
+F2 = daisies,
+F3 = petunias,
+F4 = daffodils,
+F5 = begonias,
+F6 = snapdragons ;[1m;[0m
+Bed #1: 	roses 	med 	dry 	red
+
+Bed #2: 	daisies 	med 	wet 	yellow
+
+Bed #3: 	petunias 	med 	wet 	pink
+
+Bed #4: 	daffodils 	med 	wet 	yellow
+
+Bed #5: 	begonias 	tall 	wet 	white
+
+Bed #6: 	azalea 	med 	dry 	pink
+
+
+F1 = roses,
+F2 = daisies,
+F3 = petunias,
+F4 = daffodils,
+F5 = begonias,
+F6 = azalea ;[1m;[0m
+Bed #1: 	roses 	med 	dry 	red
+
+Bed #2: 	daisies 	med 	wet 	yellow
+
+Bed #3: 	petunias 	med 	wet 	pink
+
+Bed #4: 	daffodils 	med 	wet 	yellow
+
+Bed #5: 	begonias 	tall 	wet 	white
+
+Bed #6: 	poppy 	med 	dry 	red
+
+
+F1 = roses,
+F2 = daisies,
+F3 = petunias,
+F4 = daffodils,
+F5 = begonias,
+F6 = poppy ;[1m;[0m
+Bed #1: 	roses 	med 	dry 	red
+
+Bed #2: 	daisies 	med 	wet 	yellow
+
+Bed #3: 	petunias 	med 	wet 	pink
+
+Bed #4: 	daffodils 	med 	wet 	yellow
+
+Bed #5: 	begonias 	tall 	wet 	white
+
+Bed #6: 	crocus 	med 	dry 	orange
+
+
+F1 = roses,
+F2 = daisies,
+F3 = petunias,
+F4 = daffodils,
+F5 = begonias,
+F6 = crocus ;[1m;[0m
+Bed #1: 	roses 	med 	dry 	red
+
+Bed #2: 	daisies 	med 	wet 	yellow
+
+Bed #3: 	petunias 	med 	wet 	pink
+
+Bed #4: 	daffodils 	med 	wet 	yellow
+
+Bed #5: 	begonias 	tall 	wet 	white
+
+Bed #6: 	chrysanthemum 	tall 	dry 	pink
+
+
+F1 = roses,
+F2 = daisies,
+F3 = petunias,
+F4 = daffodils,
+F5 = begonias,
+F6 = chrysanthemum .[1m.[0m
+
+[1]  ?- noprotocol.
+
+
